@@ -1,6 +1,7 @@
 import pygame
 import sys
 import math
+import random
 
 pygame.init()
 
@@ -37,8 +38,14 @@ def create_maze():
     gap = 150  # vertical gap between walls
     y = gap
     while y < HEIGHT + gap:  # ensure enough walls to fill screen and a little extra
-        wall = pygame.Rect(50, y, 500, wall_height)
-        walls.append(wall)
+        #wall = pygame.Rect(50, y, 500, wall_height)
+        #walls.append(wall)
+        gap_location = random.randint(0, WIDTH - 100)
+        wall_l = pygame.Rect(0, y, gap_location, wall_height)
+        wall_r = pygame.Rect(gap_location + 100, y, WIDTH - gap_location - 100, wall_height)
+        walls.append(wall_l)
+        walls.append(wall_r)
+
         y += gap
     return walls
 
